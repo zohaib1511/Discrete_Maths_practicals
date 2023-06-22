@@ -1,0 +1,39 @@
+#include <iostream>
+#include <set>
+
+class Set {
+private:
+    std::set<int> elements;
+
+public:
+    void addElement(int element) {
+        elements.insert(element);
+    }
+
+    bool isMember(int element) {
+        return elements.find(element) != elements.end();
+    }
+};
+
+int main() {
+    Set mySet;
+
+    mySet.addElement(25);
+    mySet.addElement(50);
+    mySet.addElement(75);
+
+    int element1 = 50;
+    int element2 = 80;
+
+    if (mySet.isMember(element1))
+        std::cout << element1 << " TRUE " << std::endl;
+    else
+        std::cout << element1 << " FALSE " << std::endl;
+
+    if (mySet.isMember(element2))
+        std::cout << element2 << " TRUE " << std::endl;
+    else
+        std::cout << element2 << " FALSE " << std::endl;
+
+    return 0;
+}
