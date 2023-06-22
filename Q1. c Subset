@@ -1,0 +1,38 @@
+#include <iostream>
+#include <unordered_set>
+
+class Set {
+private:
+    std::unordered_set<int> elements;
+
+public:
+    Set(std::unordered_set<int> inputElements) {
+        elements = inputElements;
+    }
+
+    bool isSubset(const Set& otherSet) const {
+        for (const auto& element : otherSet.elements) {
+            if (elements.find(element) == elements.end())
+                return false;
+        }
+        return true;
+    }
+};
+
+int main() {
+    Set set1({2,4,6,8,10});
+    Set set2({2,4,6,8});
+    Set set3({2,4});
+
+    if (set2.isSubset(set1))
+        std::cout << "Set2 is a subset of Set1." << std::endl;
+    else
+        std::cout << "Set2 is not a subset of Set1." << std::endl;
+
+    if (set3.isSubset(set1))
+        std::cout << "Set3 is a subset of Set1." << std::endl;
+    else
+        std::cout << "Set3 is not a subset of Set1." << std::endl;
+
+    return 0;
+}
